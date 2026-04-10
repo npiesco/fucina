@@ -1,0 +1,17 @@
+[package]
+name = "fucina"
+version = "0.1.0"
+edition = "2024"
+description = "Automated Rust repair pipeline: format, fix, verify, test"
+authors = ["Nicholas P"]
+license = "MIT"
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+which = "6.0"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = 3
