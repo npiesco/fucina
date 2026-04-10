@@ -40,6 +40,8 @@ fucina              # full pipeline
 fucina --no-test    # skip tests
 fucina --dry-run    # show commands without executing
 fucina --all-features
+fucina --recursive  # run on all Rust projects under current dir
+fucina -r -p ~/code # run on all Rust projects under ~/code
 ```
 
 ## Pipeline Steps
@@ -48,6 +50,10 @@ fucina --all-features
 2. `cargo clippy --fix` — auto-fix lint issues
 3. `cargo clippy -- -D warnings` — verify clean
 4. `cargo test` — run tests (unless `--no-test`)
+
+In `--recursive` mode, fucina walks subdirectories to find all `Cargo.toml` files,
+runs the pipeline on each project sequentially, logs failures, and continues to the next.
+Skips `target/`, `node_modules/`, and `.git/` directories.
 
 ## Integrating Into Your Workflow
 
